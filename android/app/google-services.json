@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "850654486873",
+    "project_id": "platzitripsflutter-50f5a",
+    "storage_bucket": "platzitripsflutter-50f5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850654486873:android:87c7f31a16da011181ac48",
+        "android_client_info": {
+          "package_name": "com.example.prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850654486873-nf9lvko6k9q1op5so0e2ajaqia9eo9fs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiVe9Wxwa1a7jxJp5NSGoi9KWtWkWqyDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850654486873-nf9lvko6k9q1op5so0e2ajaqia9eo9fs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
