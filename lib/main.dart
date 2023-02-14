@@ -4,9 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:prueba/User/bloc/bloc_user.dart';
+import 'package:prueba/User/ui/screens/sign_in_screen.dart';
 import 'package:prueba/firebase_options.dart';
 import 'platzi_trips.dart';
 import 'platzi_trips_cupertino.dart';
+
 
 void main() async {
   runApp(const MyApp());
@@ -28,7 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
       ),
       //home: PlatziTrips()
-      home: PlatziTripsCupertino(),
+      // home: PlatziTripsCupertino(),
+      home: SignInScreen(),
     ));
   }
 }
