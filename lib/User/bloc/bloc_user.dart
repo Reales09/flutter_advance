@@ -6,12 +6,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserBloc implements Bloc {
   final _auth_repository = AuthRepository();
 
+  //Flujo de datos - Strreams
+  // Stream - Firebase
+  //Stream controller
+  Stream<User?> streamFirebase = FirebaseAuth.instance.authStateChanges();
+  Stream<User?> get authStatus => streamFirebase;
+
+
   //Casos uso
   //1. SignIn a la apliacion Google
-
-
-    Future<OAuthCredential> signIn(){
+    Future<UserCredential> signIn(){
       return _auth_repository.signInFirebase();
+  }
+
+  singOut() {
+      _auth_repository.signOut();
   }
 
   @override

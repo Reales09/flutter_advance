@@ -4,6 +4,7 @@ import 'package:prueba/Widgets/gradient_back.dart';
 import 'package:prueba/User/bloc/bloc_user.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:prueba/platzi_trips_cupertino.dart';
 
 
 class SignInScreen extends StatefulWidget{
@@ -22,7 +23,24 @@ class _SignInScreen extends State<SignInScreen>{
   Widget build(BuildContext context) {
     // TODO: implement build
     userBloc = BlocProvider.of(context);
-    return signInGoogleUI();
+    return _handleCurrentSession();
+  }
+
+  Widget _handleCurrentSession(){
+
+    return StreamBuilder(
+       stream: userBloc.authStatus,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+         //snapshot - data - Objeto User
+         if(!snapshot.hasData || snapshot.hasError ){
+
+           return signInGoogleUI();
+         }else{
+           return PlatziTripsCupertino();
+         }
+      },
+    );
+
   }
 
   Widget signInGoogleUI(){
@@ -43,13 +61,13 @@ class _SignInScreen extends State<SignInScreen>{
                 fontWeight: FontWeight.bold
               ),
               ),
-              ButtonGreen(text: "Login with Google", onPressed: (){
-                userBloc.signIn().then((OAuthCredential user) => print("El usuario es ${user.signInMethod}"));
+
+              ButtonGreen(text: "Login with Google",
+                onPressed: (){
+                userBloc.signIn().then((UserCredential user) => print("El usuario es ${user.additionalUserInfo?.username}"));
               },
                 width: 300.0,
                 height: 50.0,
-
-
               )
             ],
 

@@ -11,11 +11,14 @@ import 'platzi_trips_cupertino.dart';
 
 
 void main() async {
-  runApp(const MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  runApp(const MyApp());
+
 }
 
 
