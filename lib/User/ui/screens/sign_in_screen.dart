@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:prueba/Widgets/button_green.dart';
 import 'package:prueba/Widgets/gradient_back.dart';
+import 'package:prueba/User/bloc/bloc_user.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class SignInScreen extends StatefulWidget{
@@ -12,9 +15,13 @@ class SignInScreen extends StatefulWidget{
 }
 
 class _SignInScreen extends State<SignInScreen>{
+
+  late UserBloc userBloc;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    userBloc = BlocProvider.of(context);
     return signInGoogleUI();
   }
 
@@ -37,7 +44,7 @@ class _SignInScreen extends State<SignInScreen>{
               ),
               ),
               ButtonGreen(text: "Login with Google", onPressed: (){
-
+                userBloc.signIn().then((OAuthCredential user) => print("El usuario es ${user.signInMethod}"));
               },
                 width: 300.0,
                 height: 50.0,
