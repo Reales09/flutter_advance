@@ -17,6 +17,7 @@ class SignInScreen extends StatefulWidget{
 
 class _SignInScreen extends State<SignInScreen>{
 
+  bool logueado = false;
   late UserBloc userBloc;
 
   @override
@@ -36,6 +37,7 @@ class _SignInScreen extends State<SignInScreen>{
 
            return signInGoogleUI();
          }else{
+
            return PlatziTripsCupertino();
          }
       },
@@ -63,8 +65,16 @@ class _SignInScreen extends State<SignInScreen>{
               ),
 
               ButtonGreen(text: "Login with Google",
+
                 onPressed: (){
-                userBloc.signIn().then((UserCredential user) => print("El usuario es ${user.additionalUserInfo?.username}"));
+                if(logueado == false){
+                  userBloc.signIn().then((UserCredential user) => print("El usuario es ${user.additionalUserInfo?.username}"));
+                  logueado = true;
+
+                }else{
+                  userBloc.singOut();
+                  logueado = false;
+                }
               },
                 width: 300.0,
                 height: 50.0,

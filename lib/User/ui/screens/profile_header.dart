@@ -18,14 +18,13 @@ class ProfileHeader extends StatelessWidget {
       stream: userBloc.streamFirebase,
       builder: (BuildContext context, AsyncSnapshot snapsShot){
         switch (snapsShot.connectionState) {
-          case ConnectionState.waiting:
-          case ConnectionState.none:
-            return CircularProgressIndicator();
           case ConnectionState.active:
           case ConnectionState.done:
             return showProfileData(snapsShot);
-
+          default:
+            return new CircularProgressIndicator();
         }
+
       },
     );
 
@@ -60,11 +59,11 @@ class ProfileHeader extends StatelessWidget {
     );
     */
 
-
   }
 
    showProfileData(AsyncSnapshot snapsShot){
 
+    print(snapsShot.data);
     if(!snapsShot.hasData || snapsShot.hasError){
       return Container(
         margin: EdgeInsets.only(
