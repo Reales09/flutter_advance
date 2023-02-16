@@ -11,11 +11,16 @@ class UserModel {
   final List<Place> myFavoritePLaces;
 
   UserModel(
-  @required this.uid,
-  @required this.name,
-  @required this.email,
-  @required this.photoURL,
-  this.myPlaces,
-  this.myFavoritePLaces,
+      this.uid,
+      this.myPlaces,
+      this.myFavoritePLaces,
+  {
+    required this.name,
+    required this.email,
+    required this.photoURL,
+
+  }
+
+
 );
 }

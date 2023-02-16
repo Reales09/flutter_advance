@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:prueba/User/model/UserModel.dart';
 import 'package:prueba/User/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:prueba/User/repository/cloud_firestore_repository.dart';
 
 class UserBloc implements Bloc {
   final _auth_repository = AuthRepository();
@@ -22,6 +24,13 @@ class UserBloc implements Bloc {
   singOut() {
       _auth_repository.signOut();
   }
+
+  //2. Registrar usuario en base de datos
+
+  final _cloudFirestoreRepository = CloudFirestoreRepository();
+
+    void updateUserData(UserModel user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
+
 
   @override
   void dispose() {

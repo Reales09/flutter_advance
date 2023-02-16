@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba/User/model/UserModel.dart';
 import 'package:prueba/Widgets/button_green.dart';
 import 'package:prueba/Widgets/gradient_back.dart';
 import 'package:prueba/User/bloc/bloc_user.dart';
@@ -68,7 +69,9 @@ class _SignInScreen extends State<SignInScreen>{
 
                 onPressed: (){
                 if(logueado == false){
-                  userBloc.signIn().then((UserCredential user) => print("El usuario es ${user.additionalUserInfo?.username}"));
+                  userBloc.signIn().then((UserCredential user){
+                    // userBloc.updateUserData(UserModel(uid: user?.uid, name: name, email: email, photoURL: photoURL, myPlaces: myPlaces, myFavoritePLaces: myFavoritePLaces))
+                  });
                   logueado = true;
 
                 }else{
