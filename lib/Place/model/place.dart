@@ -5,15 +5,18 @@ class Place {
   late String id;
   String name;
   String description;
-  String uriImage;
-  int likes;
-  User userOwner;
+  String urlImage;
+  int? likes;
+  User? userOwner;
 
   Place(
-    @required  this.name,
-    @required this.description,
-    @required this.uriImage,
+  {
+    required  this.name,
+    required this.description,
+    required this.urlImage,
     this.likes,
-    @required this.userOwner
+    this.userOwner
+}
+
 );
 }

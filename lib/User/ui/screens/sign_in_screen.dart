@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:prueba/User/bloc/bloc_user.dart';
 import 'package:prueba/User/model/UserModel.dart';
 import 'package:prueba/Widgets/button_green.dart';
 import 'package:prueba/Widgets/gradient_back.dart';
-import 'package:prueba/User/bloc/bloc_user.dart';
+import 'package:prueba/User/bloc/bloc_user.dart' as User_Model;
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:prueba/platzi_trips_cupertino.dart';
@@ -29,7 +30,6 @@ class _SignInScreen extends State<SignInScreen>{
   }
 
   Widget _handleCurrentSession(){
-
     return StreamBuilder(
        stream: userBloc.authStatus,
       builder: (BuildContext context, AsyncSnapshot snapshot){
@@ -43,11 +43,9 @@ class _SignInScreen extends State<SignInScreen>{
          }
       },
     );
-
   }
 
   Widget signInGoogleUI(){
-
     return Scaffold(
       body:Stack(
         alignment: Alignment.center,
@@ -64,13 +62,11 @@ class _SignInScreen extends State<SignInScreen>{
                 fontWeight: FontWeight.bold
               ),
               ),
-
               ButtonGreen(text: "Login with Google",
-
                 onPressed: (){
                 if(logueado == false){
                   userBloc.signIn().then((UserCredential user){
-                    // userBloc.updateUserData(UserModel(uid: user?.uid, name: name, email: email, photoURL: photoURL, myPlaces: myPlaces, myFavoritePLaces: myFavoritePLaces))
+                    userBloc.updateUserData(UserModel(uid: user.user?.uid, name: user.user?.displayName??'', email: user.user?.email??'', photoURL: user.user?.photoURL??''));
                   });
                   logueado = true;
 
@@ -83,12 +79,9 @@ class _SignInScreen extends State<SignInScreen>{
                 height: 50.0,
               )
             ],
-
           )
         ],
-
       ) ,
-
     );
   }
 }

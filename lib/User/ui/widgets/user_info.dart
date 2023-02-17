@@ -27,7 +27,8 @@ class UserInfo extends StatelessWidget {
           image: DecorationImage(
               fit: BoxFit.cover,
               // image: AssetImage(userModel.photoURL)
-            image: NetworkImage(userModel.photoURL)
+
+            image: NetworkImage(userModel.photoURL??'')
           )
       ),
     );
@@ -50,7 +51,7 @@ class UserInfo extends StatelessWidget {
             )
         ),
         Text(
-            userModel.email,
+            userModel.email??'',
             style: TextStyle(
                 fontSize: 15.0,
                 color: Colors.white30,
