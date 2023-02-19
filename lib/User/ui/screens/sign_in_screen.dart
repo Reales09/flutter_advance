@@ -21,10 +21,13 @@ class _SignInScreen extends State<SignInScreen>{
 
   bool logueado = false;
   late UserBloc userBloc;
+  double? screenWidth;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    double screenWidth = MediaQuery.of(context).size.width;
+
     userBloc = BlocProvider.of(context);
     return _handleCurrentSession();
   }
@@ -50,18 +53,24 @@ class _SignInScreen extends State<SignInScreen>{
       body:Stack(
         alignment: Alignment.center,
         children: [
-          GradientBack("",double.infinity),
+          GradientBack(height: null),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Flexible(child: Container(
+                width: screenWidth,
+              child:
               Text("Welcome \n this is your travel App",
-              style: TextStyle(
-                fontSize: 37.0,
-                fontFamily: "Lato",
-                color: Colors.white,
-                fontWeight: FontWeight.bold
+                  style: TextStyle(
+                      fontSize: 37.0,
+                      fontFamily: "Lato",
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              )
               ),
-              ),
+
               ButtonGreen(text: "Login with Google",
                 onPressed: (){
                 if(logueado == false){
