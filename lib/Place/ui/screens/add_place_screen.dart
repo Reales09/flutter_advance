@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:prueba/Widgets/gradient_back.dart';
+import 'package:prueba/Widgets/title_header.dart';
 
 class AddPlaceScreen extends StatefulWidget {
 
@@ -23,6 +24,8 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Stack(
@@ -42,7 +45,15 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
                     },
                   ),
                 ),
-              )
+              ),
+              Flexible(child: Container(
+                width: screenWidth,
+                child: Container(
+                  padding: EdgeInsets.only(top:45, left: 20.0, right: 10.0),
+                  child: TitleHeader(title: "Add a new Place"),
+                ),
+              ))
+
             ],
           )
         ],

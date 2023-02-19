@@ -21,18 +21,21 @@ class ButtonsBar extends StatelessWidget {
           children: <Widget>[
             //cambiar contraseña
             CircleButton(true, Icons.vpn_key, 20.0, Color.fromRGBO(255, 255, 255, 0.6), () => {}),
-            //Cerrar Sesión
-            CircleButton(false, Icons.exit_to_app, 40.0, Color.fromRGBO(255, 255, 255, 1),() => {
-              userBloc.singOut()
-            } ),
+
 
             //Añadiremos un nuevo lugar
-            CircleButton(true, Icons.add, 20.0, Color.fromRGBO(255, 255, 255, 0.6),() {
+            CircleButton(false, Icons.add, 40.0, Color.fromRGBO(255, 255, 255, 1),() {
               File? image;
               Navigator.push(context,
                   MaterialPageRoute(
                       builder: (BuildContext context) => AddPlaceScreen(image: image)));
             }),
+
+            //Cerrar Sesión
+            CircleButton(true, Icons.exit_to_app, 20.0, Color.fromRGBO(255, 255, 255, 0.6),() => {
+              userBloc.singOut()
+            } ),
+
           ],
         )
     );
