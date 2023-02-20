@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:prueba/Place/ui/widgets/card_image.dart';
 import 'package:prueba/Place/ui/widgets/title_input_location.dart';
+import 'package:prueba/Widgets/button_purple.dart';
 import 'package:prueba/Widgets/gradient_back.dart';
 import 'package:prueba/Widgets/text_input.dart';
 import 'package:prueba/Widgets/title_header.dart';
@@ -30,7 +32,6 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
     double screenWidth = MediaQuery.of(context).size.width;
     final _controllerTitlePlace = TextEditingController();
     final _controllerDescriptionPlace = TextEditingController();
-
 
     return Scaffold(
       body: Stack(
@@ -65,7 +66,15 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
             child: ListView(
               children: [
                 Container(//foto
+                  alignment: Alignment.center,
+                  child: CardImageWithFabIcon(
+                    pathImage: "assets/img/sunset.jpeg", //widget.image!.path,
+                    iconData: Icons.camera,
+                    width: 340.0,
+                    height: 250.0,
+                    onPressedFabICon: (){},
 
+                  ),
                 ),
                 Container(//TextFiel title
                   margin: EdgeInsets.only(bottom: 20.0),
@@ -81,6 +90,19 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
                   margin: EdgeInsets.only(top: 20.0),
                   child: TextInputLocation(hintText: "Add Location",
                       iconData: Icons.location_on_outlined),
+                ),
+                Container(
+                  width: 70.0,
+                  child: ButtonPurple(
+                    buttonText: "Add Place",
+                    onPressed: () {
+                      //Fiirebase Storage
+                      //Url -
+                      //Cloud Firestore
+                      //Place - title, descripción, url, userOwner, likes
+
+                    },
+                  ),
                 )
               ],
             ),
