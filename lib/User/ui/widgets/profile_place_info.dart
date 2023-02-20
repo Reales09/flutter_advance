@@ -90,7 +90,7 @@ class ProfilePlaceInfo extends StatelessWidget {
       alignment: Alignment(0.8, 1.25),
       children: <Widget>[
         card,
-        FloatingActionButtonGreen()
+        FloatingActionButtonGreen(iconData:Icons.favorite_border,onPressed: (){},)
       ],
     );
   }
